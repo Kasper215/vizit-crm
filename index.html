@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ВИЗИТ — CRM редакции</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <aside>
+    <a class="brand" href="/">ВИЗИТ<span>ДОНЕЦК</span></a>
+    <nav aria-label="Разделы">
+      <button data-view="list" aria-pressed="true">▤ <span>Заявки</span></button>
+      <button data-view="board" aria-pressed="false">▥ <span>Воронка</span></button>
+    </nav>
+    <div class="aside-foot">Рабочее пространство<br><strong>Редакция журнала</strong></div>
+  </aside>
+  <main>
+    <header><span>Редакция / Работа с бизнесом</span><button id="export">Скачать CSV ↓</button></header>
+    <section class="hero">
+      <div><p>ЖУРНАЛ «ВИЗИТ ДОНЕЦК»</p><h1 id="title">Заявки на размещение</h1><div>Путь от первого контакта до публикации.</div></div>
+      <button class="primary" id="add">＋ Новая заявка</button>
+    </section>
+    <section id="metrics" aria-label="Сводка"></section>
+    <section class="panel">
+      <div class="toolbar">
+        <input type="search" id="search" aria-label="Поиск заявок" placeholder="Поиск по бизнесу, контакту или Instagram">
+        <select id="filter" aria-label="Статус заявки"></select>
+      </div>
+      <p id="notice" role="status"></p>
+      <div id="results"></div>
+    </section>
+  </main>
+  <dialog id="card">
+    <form id="editor">
+      <div class="dialog-top"><h2 id="cardTitle">Новая заявка</h2><button type="button" id="close" aria-label="Закрыть">✕</button></div>
+      <div class="fields">
+        <label>Название бизнеса<input name="business" required maxlength="160"></label>
+        <label>Рубрика<input name="category" maxlength="100" placeholder="Например, рестораны"></label>
+        <label>Контакт<input name="contact" maxlength="160"></label>
+        <label>Телефон<input name="phone" type="tel" maxlength="40" placeholder="+7 900 000-00-00"></label>
+        <label>Электронная почта<input name="email" type="email" maxlength="180"></label>
+        <label>Instagram<input name="instagram" maxlength="100" placeholder="@username"></label>
+        <label>Источник<input name="source" maxlength="100" placeholder="Например, Instagram Reels"></label>
+        <label>Следующий контакт<input name="deadline" type="date"></label>
+        <label>Статус<select name="stage" required></select></label>
+        <label class="wide">Заметки<textarea name="notes" rows="4" maxlength="5000"></textarea></label>
+      </div>
+      <div id="documents"></div>
+      <div id="sourceLinks"></div>
+      <details id="pdfDetails"><summary>Поля, извлечённые из PDF</summary><pre id="pdfText"></pre></details>
+      <div id="history"></div><p id="error" role="alert"></p>
+      <div class="dialog-actions"><button class="primary" type="submit">Сохранить заявку</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

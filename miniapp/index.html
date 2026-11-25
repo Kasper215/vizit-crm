@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f1e8">
+  <title>ВИЗИТ · CRM</title>
+  <link rel="stylesheet" href="/miniapp/style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script defer src="/miniapp/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/miniapp"><span>ВИЗИТ</span><small>ДОНЕЦК · CRM</small></a>
+    <div class="user-chip" id="userName">Редакция</div>
+  </header>
+  <main>
+    <section class="heading">
+      <div><p class="eyebrow">Рабочее пространство</p><h1 id="pageTitle">Заявки</h1></div>
+      <button class="button primary" id="newApplication">＋ <span>Новая</span></button>
+    </section>
+    <section class="metrics" id="metrics" aria-label="Сводка"></section>
+    <section class="workspace">
+      <div class="controls">
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Поиск по заявкам" autocomplete="off"></label>
+        <select id="stageFilter" aria-label="Фильтр по статусу"><option value="">Все этапы</option></select>
+      </div>
+      <div class="view-switch" role="tablist" aria-label="Вид заявок">
+        <button type="button" data-view="list" aria-selected="true">Список</button>
+        <button type="button" data-view="board" aria-selected="false">Воронка</button>
+      </div>
+      <p id="notice" role="status"></p>
+      <div id="results" aria-live="polite"></div>
+    </section>
+  </main>
+  <nav class="bottom-nav" aria-label="Навигация">
+    <button data-view="list" aria-current="page"><span>▤</span>Заявки</button>
+    <button data-view="board"><span>▥</span>Воронка</button>
+    <button id="dueNav"><span>◷</span>На сегодня</button>
+  </nav>
+  <dialog id="editorDialog">
+    <form id="editor" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow">Карточка CRM</p><h2 id="dialogTitle">Новая заявка</h2></div><button type="button" class="icon-button" id="closeDialog" aria-label="Закрыть">×</button></div>
+      <div class="form-grid">
+        <label class="wide">Название бизнеса<input name="business" required maxlength="160"></label>
+        <label>Рубрика<input name="category" maxlength="100" placeholder="Кафе, бьюти…"></label>
+        <label>Этап<select name="stage" required></select></label>
+        <label>Контактное лицо<input name="contact" maxlength="160"></label>
+        <label>Телефон<input name="phone" type="tel" maxlength="40" placeholder="+7 900 000-00-00"></label>
+        <label>Почта<input name="email" type="email" maxlength="180"></label>
+        <label>Instagram<input name="instagram" maxlength="100" placeholder="@username"></label>
+        <label>Следующий контакт<input name="deadline" type="date"></label>
+        <label>Источник<input name="source" maxlength="100"></label>
+        <label class="wide">Заметки<textarea name="notes" rows="3" maxlength="5000"></textarea></label>
+      </div>
+      <div class="record-meta">
+        <div id="documents"></div>
+        <div id="sourceLinks"></div>
+        <details id="pdfDetails"><summary>Текст из PDF</summary><pre id="pdfText"></pre></details>
+        <div id="history"></div>
+      </div>
+      <p id="formError" role="alert"></p>
+      <div class="form-actions"><button type="button" class="button quiet" id="cancelDialog">Отмена</button><button type="submit" class="button primary">Сохранить</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

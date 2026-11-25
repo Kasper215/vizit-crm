@@ -1,0 +1,17 @@
+# Secrets and local state
+.env
+.env.*
+!.env.example
+data/
+
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.log
+
+# Editor and operating-system files
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
